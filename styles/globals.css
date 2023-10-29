@@ -37,6 +37,16 @@ input {
   font-size: inherit;
 }
 
+button:disabled {
+  position: relative;
+  pointer-events: none;
+  opacity: .6;
+}
+
+button:focus {
+  outline: none;
+}
+
 ul,
 ol {
   list-style: none;

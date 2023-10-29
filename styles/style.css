@@ -1,6 +1,7 @@
 /* Здесь вы напишете основную часть стилей страницы.
 
-Будьте внимательны! Для корректной работы скриптов на этом сайте нужно, чтобы в HTML некоторые классы были названы особым образом:
+Будьте внимательны! Для корректной работы скриптов на этом сайте нужно,
+чтобы в HTML некоторые классы были названы особым образом:
 ✦ theme-dark — класс тёмной темы
 ✦ theme-light — класс светлой темы
 ✦ like-icon — для svg-иконки анимированного сердца
@@ -10,13 +11,156 @@
 ✦ is-liked — для обозначения состояния лайкнутой иконки в виде сердца
 ✦ button__text — для обозначения текстового элемента внутри кнопки
 
-Кроме этого, не меняйте HTML переключателя тем. Его разметка также гарантирует работу своего скрипта.
+Кроме этого, не меняйте HTML переключателя тем. Его разметка также
+гарантирует работу своего скрипта.
 
 */
 
 .page {
+  margin: 0 auto;
+  max-width: 700px;
   min-inline-size: 320px;
   min-block-size: 100dvb;
   font-family: var(--main-font-family), sans-serif;
-  font-variation-settings: 'wght' var(--main-font-weight, 400);
+  font-variation-settings: "wght" var(--main-font-weight, 400);
+  background-image: var(--body-pattern);
+  background-size: cover;
+}
+
+.page__header {
+  margin-block-start: 100px;
+  margin-block-end: 100px;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  padding-block-start: clamp(7.5rem, 7.214rem + 1.43vw, 8.5rem);
+  padding-block-end: 25px;
+  align-items: center;
+  border: 2px solid var(--acent-color);
+  background-color: var(--bg-color);
+  max-width: 696px;
+}
+
+.header__logo {
+  color: var(--acent-color);
+  font-family: var(--accent-font-family);
+  font-size: clamp(2.813rem, 2.455rem + 1.79vw, 4.063rem);
+  font-weight: var(--main-font-weight);
+  margin-bottom: 20px;
+}
+
+.header__title {
+  color: var(--acent-color);
+  font-family: var(--accent-font-family);
+  font-size: clamp(0.875rem, 0.714rem + 0.8vw, 1.438rem);
+  font-weight: var(--main-font-weight);
+  margin-bottom: 25px;
+  text-transform: uppercase;
+}
+
+.theme-menu {
+  padding-inline-start: 25px;
+}
+
+.theme-menu__list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.theme-menu__item {
+  font-family: var(--accent-font-family);
+  font-weight: var(--main-font-weight);
+}
+
+.theme-menu__button {
+  background-color: transparent;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+  text-transform: uppercase;
+  color: var(--acent-color);
+  transition: opacity .3s;
+}
+
+.theme-menu__button::after {
+  content: '';
+  display: block;
+  width: 0%;
+  height: 2px;
+  margin-top: 2px;
+  background-color: currentColor;
+  transition: width .3s;
+}
+
+@media (width >= 1024px) {
+  .theme-menu__button:hover {
+    opacity: .6;
+  }
+  .theme-menu__button:focus-visible::after {
+    width: 100%;
+  }
+}
+
+.theme-menu__button:disabled::before {
+  content: '▶';
+  position: absolute;
+  top: 0;
+  left: -20px;
+  animation: left-right .5s ease-in-out infinite alternate;
+}
+
+.card {
+  display: grid;
+  grid-template-columns: 1fr;
+  border: 2px solid var(--acent-color);
+}
+
+.page__card {
+  background-color: var(--bg-color);
+}
+
+.card__title {
+  padding: 3px 10px;
+  font-size: 18px;
+  font-variation-settings: "wght" var(--title-font-weight);
+  color: var(--acent-color);
+  border-bottom: 2px solid var(--acent-color);
+  
+}
+
+.card__image-content {
+  position: relative;
+}
+
+.card__image-content span {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  font-family: var(--accent-font-family);
+  opacity: .8;
+  color: var(--span-color);
+}
+
+.card__image {
+  inline-size: 100%;
+  block-size: 100%;
+}
+
+.card__description {
+  padding: 25px;
+  font-size: 18px;
+  font-variation-settings: "wght" var(--main-font-weight);
+  color: var(--acent-color);
+  border-top: 2px solid var(--acent-color);
+}
+
+.card__description p {
+  margin-block-end: 27px;
+}
+
+.card__description p:last-of-type {
+  margin-block-end: 0;
 }
