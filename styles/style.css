@@ -112,6 +112,34 @@
   animation: left-right .5s ease-in-out infinite alternate;
 }
 
+.cardItem:nth-child(2) .card__image {
+  filter: saturate(30%);
+}
+
+.cardItem:nth-child(3) .card__image {
+  filter: saturate(250%);
+}
+
+.cardItem:nth-child(4) .card__image {
+  filter: hue-rotate(35deg);
+}
+
+.cardItem:nth-child(5) .card__image {
+  filter: invert(80%);
+}
+
+.cardItem:nth-child(6) .card__image {
+  filter: sepia(70%);
+}
+
+.cardItem:nth-child(7) .card__image {
+  filter: blur(10px);
+}
+
+.cardItem:nth-child(8) .card__image {
+  filter: hue-rotate(105deg) contrast(60%);
+}
+
 .card {
   display: grid;
   grid-template-columns: 1fr;
@@ -120,15 +148,15 @@
 
 .page__card {
   background-color: var(--bg-color);
+  margin-block-end: 50px;
 }
 
 .card__title {
-  padding: 3px 10px;
+  padding: 3px 25px;
   font-size: 18px;
   font-variation-settings: "wght" var(--title-font-weight);
   color: var(--acent-color);
   border-bottom: 2px solid var(--acent-color);
-  
 }
 
 .card__image-content {
@@ -140,8 +168,10 @@
   top: 25px;
   right: 25px;
   font-family: var(--accent-font-family);
+  font-size: clamp(0.75rem, 0.714rem + 0.18vw, 0.875rem);
   opacity: .8;
   color: var(--span-color);
+  z-index: 2;
 }
 
 .card__image {
@@ -163,4 +193,66 @@
 
 .card__description p:last-of-type {
   margin-block-end: 0;
+}
+
+.card__controls {
+  display: flex;
+  justify-content: flex-end;
+  padding-inline-end: 25px;
+  margin-block-end: 25px;
+  gap: 12px;
+}
+
+.card__icon-button {
+  background-color: transparent;
+  border: none;
+}
+
+.like-icon {
+  fill: var(--acent-color);
+  cursor: pointer;
+  transition: opacity .3s;
+}
+
+.button {
+  position: relative;
+  width: 130px;
+  height: 38px;
+  background-color: transparent;
+  border: 2px solid var(--acent-color);
+  cursor: pointer;
+  transition: opacity .3s;
+}
+
+.button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: var(--acent-color);
+  width: 128px;
+  height: 34px;
+  transition: transform .5s ease-in-out;
+  transform-origin: left;
+  transform: scaleX(0);
+}
+
+@media (width >= 1024px) {
+  .like-icon:hover {
+    opacity: .6;
+  }
+  .button:hover::before {
+    transform: scaleX(1);
+  }
+  .button:focus-visible {
+    box-shadow: 2px 2px 0 var(--acent-color);
+  }
+}
+
+.button__text {
+  color: var(--span-color);
+  font-family: var(--accent-font-family);
+  font-size: 12px;
+  mix-blend-mode: difference;
+  transition: opacity .3s;
 }
